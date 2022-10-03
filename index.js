@@ -21,7 +21,7 @@ app.post('/', (req, res) => {
 });
 
 app.get('/metrics', async (req, res) => {
-  res.header('Content-Type', 'application/json');
+  res.set('Content-Type', register.contentType);
   res.send(await register.getSingleMetricAsString('my_counter'));
 });
 
