@@ -8,7 +8,7 @@ const app = express();
 app.use(express.json());
 
 const counter = new Counter({
-  name: 'my_counter',
+  name: 'http_requests_total',
   help: 'Example of a counter',
   labelNames: ['method', 'path']
 });
@@ -22,7 +22,7 @@ app.post('/', (req, res) => {
 
 app.get('/metrics', async (req, res) => {
   res.set('Content-Type', register.contentType);
-  res.send(await register.getSingleMetricAsString('my_counter'));
+  res.send(await register.getSingleMetricAsString('http_requests_total'));
 });
 
 const PORT = process.env.PORT || 3000;
